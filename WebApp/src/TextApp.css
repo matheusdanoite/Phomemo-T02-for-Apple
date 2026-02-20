@@ -1,0 +1,311 @@
+:root {
+    --primary-color: rgb(116, 183, 174);
+    --bg-color: #000000;
+    --text-color: rgb(255, 255, 255);
+    --button-bg: rgb(26, 26, 26);
+    --button-text-color: #000000;
+    --input-bg: #2a2a2a;
+    background-color: #000000;
+    /* Override index.css */
+}
+
+#root {
+    max-width: 1280px;
+    grid-template-columns: 1fr;
+    /* Override if grid is used elsewhere */
+    margin: 0 auto;
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    /* Ensure centering */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    /* Vertical center if height allows */
+}
+
+.text-app-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 1rem;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: left;
+    margin-bottom: 2rem;
+    font-size: 2.5em;
+    /* Smaller base size */
+    /* Match App.css */
+    line-height: 1.1;
+    background: -webkit-linear-gradient(315deg, rgb(116, 183, 174) 25%, rgb(250, 229, 228));
+    /* Match App.css gradient */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tab-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.tab-button {
+    padding: 0.8rem 1.1rem;
+    border: none;
+    background: rgba(116, 183, 174);
+    color: rgb(0, 0, 0);
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: transform 0.1s, background-color 0.2s;
+    flex: 1;
+    /* Allow flexible width */
+    max-width: 150px;
+}
+
+.tab-button:hover {
+    background: rgba(250, 229, 228);
+    transform: scale(1.05);
+
+}
+
+.tab-button.active {
+    background: var(--primary-color);
+    color: var(--button-text-color);
+    box-shadow: 0 4px 15px rgba(250, 229, 228, 0.3);
+}
+
+.controls {
+    background: rgba(255, 255, 255, 0.05);
+    /* Match .controls-section in App.css */
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.control-group {
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.control-group:last-child {
+    margin-bottom: 0;
+}
+
+.control-group label {
+    display: block;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    /* Allow wrapping on very small screens */
+}
+
+.button-group button {
+    flex: 1;
+    padding: 0.6em 1em;
+    border: 1px solid transparent;
+    /* Match index.css button */
+    background: var(--button-bg);
+    color: var(--text-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    font-size: 1rem;
+    font-weight: 500;
+    min-width: 80px;
+    /* Minimum touch target */
+}
+
+.button-group button:hover {
+    border-color: var(--primary-color);
+}
+
+.button-group button.active {
+    background: var(--primary-color);
+    color: var(--button-text-color);
+    border-color: var(--primary-color);
+}
+
+.control-group input[type="range"] {
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #2a2a2a;
+    color: white;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    /* Remove default styling */
+    appearance: none;
+    /* Standard property for compatibility */
+    height: 10px;
+    /* Track height */
+    padding: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.control-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    /* Larger width */
+    height: 30px;
+    /* Larger height */
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+/* Firefox */
+.control-group input[type="range"]::-moz-range-thumb {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+.input-area {
+    width: 100%;
+}
+
+.input-area textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: var(--input-bg);
+    color: white;
+    font-size: 1rem;
+    resize: vertical;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.25s;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.input-area textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.preview-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    /* Dark theme accent */
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.preview-area h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.preview-canvas {
+    border: 1px solid #444;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+    height: auto;
+    background-color: white;
+    /* Canvas needs to be white for preview of print */
+}
+
+.print-button {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--button-text-color);
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.2s;
+    box-shadow: 0 4px 15px rgba(250, 229, 228, 0.3);
+    box-sizing: border-box;
+}
+
+.print-button:hover {
+    background-color: rgb(250, 229, 228);
+    transform: scale(1.05);
+    /* Match App.css hover effect */
+}
+
+.print-button:active {
+    transform: scale(0.95);
+}
+
+.print-button:disabled {
+    background-color: #444;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.success-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4cc9f0;
+    color: #000;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(76, 201, 240, 0.3);
+    font-weight: bold;
+    animation: slideUp 0.3s ease-out;
+    width: 90%;
+    max-width: 300px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, 100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}

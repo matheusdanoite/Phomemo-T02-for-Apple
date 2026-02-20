@@ -1,0 +1,301 @@
+:root {
+  --primary-color: rgb(116, 183, 174);
+  --bg-color: #000000;
+  --text-color: rgb(0, 0, 0);
+  --button-bg: #1a1a1a;
+  --button-text-color: #000000;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 4.2rem;
+  /* Smaller for mobile start */
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  background: -webkit-linear-gradient(315deg, rgb(116, 183, 174) 25%, rgb(250, 229, 228));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  text-align: left;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.button {
+  border-radius: 8px;
+  padding: 0.8em 2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: rgb(116, 183, 174);
+  cursor: pointer;
+  transition: transform 0.1s, background-color 0.2s;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+.button:hover {
+  background-color: rgb(250, 229, 228);
+  color: rgb(0, 0, 0);
+  transform: scale(1.05);
+}
+
+.preview-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.preview-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  image-rendering: pixelated;
+  /* Important for dithered images */
+}
+
+.print-button {
+  background-color: rgb(116, 183, 174);
+  color: rgb(0, 0, 0);
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 2rem;
+}
+
+.print-button:hover {
+  background-color: rgb(250, 229, 228);
+  transform: scale(1.05);
+}
+
+.print-button:active {
+  transform: scale(0.95);
+}
+
+.print-button:disabled {
+  background-color: rgb(175, 175, 175);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.success-message {
+  color: rgb(116, 183, 174);
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.error-message {
+  color: rgb(175, 175, 175);
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgb(255, 255, 255);
+  padding: 1rem;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.control-group label {
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: block;
+}
+
+
+.control-group select {
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #2a2a2a;
+  color: white;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+.control-group input[type="range"] {
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #2a2a2a;
+  color: white;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  /* Remove default styling */
+  appearance: none;
+  /* Standard property for compatibility */
+  height: 10px;
+  /* Track height */
+  padding: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.control-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  /* Larger width */
+  height: 30px;
+  /* Larger height */
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+/* Firefox */
+.control-group input[type="range"]::-moz-range-thumb {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+/* Home Component Styles */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.main-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+}
+
+.menu-section {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.menu-button {
+  width: 100%;
+  padding: 1.2rem;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: rgb(0, 0, 0)
+    /* Make buttons look substantial/touch-friendly */
+}
+
+.divider {
+  width: 80%;
+  height: 1px;
+  background-color: #333;
+  margin: 2rem 0;
+}
+
+.button-group-vertical {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Scrollable Back Button - Flow Content */
+.footer-controls {
+  width: 100%;
+  max-width: 400px;
+  margin: 2rem auto;
+  /* Add margin to separate from content above */
+  padding-bottom: 2rem;
+  /* Add some padding at the bottom of the page */
+  display: flex;
+  justify-content: center;
+}
+
+.back-button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: #444;
+}
