@@ -1,41 +1,46 @@
-# Phomemo T02
+# Phomemo T02 for Apple
+[Versão em português](README.pt-br.md)
 
-Este projeto consiste em uma aplicação iOS e uma Web App (React) para permitir a impressão de imagens e textos em impressoras Phomemo T02 via Bluetooth, utilizando o Firebase para sincronização entre dispositivos.
 
-## Estrutura do Projeto
+Third time's the charm! On my third iteration of connecting my Apple devices to a Phomemo T02 printer, this project consists of an iOS app and a Web App (React) to enable printing images and text on this printer model via Bluetooth, using Firebase to allow third parties to send data to be printed locally via Bluetooth. I love this printer model!
 
-- **/iOSApp**: Contém o projeto Xcode (.xcodeproj) e o código-fonte em Swift. O aplicativo gerencia a conexão Bluetooth com a impressora e atua como Host ou Client de impressão.
-- **/WebApp**: Contém o frontend em React (Vite) utilizado para processar imagens (algoritmos de dithering como Floyd-Steinberg) antes de enviá-las para impressão.
+## How it Works
+You can deploy the web app (or not) to a web address, and anyone who accesses that page will be able to send files to be printed on your printer. When a file is sent, it is converted to Base64 and sent to Firebase. When the app in this repository receives "the blessing of iOS" to run in the background, it checks for updates. If there are any, Firebase transmits the data, which is decoded on the device and printed via Bluetooth. Once printed, the data is deleted from Firebase.
 
-## Como Configurar
+### Multipeer Connectivity
+I also added a feature that allows sharing the printer with other people running the same app. A multipeer connection is created using Apple's `MultipeerConnectivity` framework to allow exactly that: a local network without a central server. When a device opens the app, it automatically starts in **Client Mode**. In this mode, it searches for other available devices in **Host Mode** or for printers to connect to; once it connects to a printer, it assumes the Host role. As a Host, its job is to route all received print jobs to the printer, including those from connected clients.
 
-### 1. Firebase (Obrigatório)
-O projeto utiliza o Firebase Firestore e Storage. Para rodar, você precisará dos seus próprios arquivos de configuração:
+### App Intents & Shortcuts
+There is also support for App Intents: you can print text or your clipboard via Siri, Shortcuts, or any other Apple gear. There are two intents: one for printing text and images, and another for the clipboard. The text & image one is my favorite: a space for an image, followed by a title and text. I made a "fax" for printing messages I receive via iMessage and use it as a memory keeper: I take a photo, write a caption, and print it with the title configured to pull the photo's creation date and time. Cool, right? People usually love it at meetups.
 
-1. Crie um projeto no [Firebase Console](https://console.firebase.google.com/).
+## Project Structure
+- **/iOSApp**: Contains the Xcode project (.xcodeproj) and Swift source code. The app manages the Bluetooth connection with the printer and acts as a Print Host or Client.
+- **/WebApp**: Contains the React frontend (Vite) used to process images (dithering algorithms like Floyd-Steinberg) before sending them for printing.
+
+## How to Configure
+### 1. Firebase (Required)
+The project uses Firebase Firestore and Storage. To run it, you will need your own configuration files:
+
+1. Create a project in the [Firebase Console](https://console.firebase.google.com/).
 2. **iOS**:
-   - Adicione um aplicativo iOS ao seu projeto Firebase.
-   - Baixe o arquivo `GoogleService-Info.plist`.
-   - Coloque-o em `iOSApp/GoogleService-Info.plist` (use o arquivo `.example` como referência).
+   - Add an iOS app to your Firebase project.
+   - Download the `GoogleService-Info.plist` file.
+   - Place it at `iOSApp/GoogleService-Info.plist` (use the `.example` file as a reference).
 3. **Web**:
-   - Adicione um Web App ao seu projeto Firebase.
-   - Copie as credenciais e preencha o arquivo `WebApp/src/firebaseConfig.js` (use o arquivo `firebaseConfig.example.js` como referência).
+   - Add a Web App to your Firebase project.
+   - Copy the credentials and fill in the `WebApp/src/firebaseConfig.js` file (use the `firebaseConfig.example.js` file as a reference).
 
-### 2. Rodando a Web App
+### 2. Running the Web App
 ```bash
 cd WebApp
 npm install
 npm run dev
 ```
 
-### 3. Rodando o App iOS
-Abra `iOSApp/t02web.xcodeproj` no Xcode, certifique-se de configurar seu *Development Team* na aba *Signing & Capabilities* e execute em um dispositivo físico (Bluetooth é necessário).
+### 3. Running the iOS App
+Open `iOSApp/t02web.xcodeproj` in Xcode, ensure you configure your *Development Team* in the *Signing & Capabilities* tab, and run it on a physical device (Bluetooth is required).
 
-## Funcionalidades
-- Conexão Bluetooth com Phomemo T02.
-- Processamento de imagem em tempo real (Dithering).
-- Compartilhamento de impressora entre dispositivos (Host/Client mode).
-- Atalhos da Siri (App Intents) para impressão rápida de texto e área de transferência.
+## Final Considerations
+Print jobs are all processed on the source device, and it also works great on macOS — you can build it for Mac as well. It was vibecoded to the max, and I apologize for that — but at least it worked here.
 
----
-Desenvolvido por **matheusdanoite**.
+Developed by **matheusdanoite chaebol**.
